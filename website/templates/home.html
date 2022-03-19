@@ -1,0 +1,99 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block content %}
+<div class="container-fluid my-5">
+</div>
+<div class="navbar navbar-expand-sm bg-secondary navbar-dark">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">COVID-19 DECTECTOR</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="#">About me</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<div class="container-fluid mt-5">
+  <div class="row">
+    <div class="col-sm-4 bg-secondary" >
+      <img src="{{url_for('static',filename='images/photo.jpg')}}" class="rounded-circle mx-auto d-block" alt="circle image" height="450" width="300px">
+    </div>
+    <div class="col-sm-8 bg-light px-5">
+      <div class="row">
+		<div class="cointainer">
+			<button type="button" class="btn btn-success">ONLINE</button>
+		</div>
+	   </div>
+	   <div class=" my-5 d-flex align-items-center justify-content-center">
+			<div class=my-5">
+                <label for="Image" class="form-label"><h3>Drop your file here (png, jpeg, jpg)</h3></label>
+				<img src="{{url_for('static',filename='images/image.jpg')}}" class="rounded mx-auto d-block" alt="showed x-ray gone" height="150px" width="200px">
+                <br/>
+                <form action="{{url_for('views.my_upload-image')}}" method="post" enctype="multipart/form-data">
+                    <input class="form-control-file" type="file" id="formFile" name="image" onchange="preview()">
+                    <br/>
+                    <br/>
+                    <button onclick="clearImage()" class="btn btn-primary mt-3">Let's Check</button>
+                </form>
+
+            </div>
+            <img id="frame" src="" class="img-fluid" />
+
+        </div>
+    </div>
+
+  </div>
+</div>
+
+ <!-- Footer -->
+<footer class="page-footer font-small teal pt-4">
+
+  <!-- Footer Text -->
+  <div class="container-fluid text-center text-md-left bg-success">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class=" mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase font-weight-bold text-center">Disclaimer before using the system</h5>
+        <ul class="list">
+
+            <h2 class="font-weight-normal"> Before using our model please read the following:</h2>
+				<li class="list-item font-weight-light">Use only standard X-Ray images.</li>
+				<li class="list-item font-weight-light">It is an AI diagnosis COVID-19 detector which works on only chest X-Ray.</li>
+                <li class="list-item font-weight-light">The intention of covid-19 Detector is to be used as a reference Model that can built upon and enhanced as new data become available</li>
+                <li class="list-item font-weight-light">We are at a reasearch stage and no yet intended as production ready Models,It means we are not saying people to used as direct clinical diagnisis</li>
+                <li class="list-item font-weight-light">We are working continuously to improve our model as new data become available </li>
+
+        </ul>
+      </div>
+      <!-- Grid column -->
+
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Text -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+    <a href=""> Covid_Detector.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+<script src="{{url_for('static',filename='index.js')}}"></script>
+
+{% endblock %}
